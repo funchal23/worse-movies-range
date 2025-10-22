@@ -9,10 +9,17 @@ API para ler os indicados e vencedores da categoria de pior filme e para mostrar
 
 ## Como executar a aplicação
 
+HTTPS
 ```bash
-git clone [URL_DO_REPOSITORIO]
+git clone https://github.com/funchal23/worse-movies-range.git
 cd worse-movie
+./gradlew bootRun
+```
 
+SSH
+```bash
+git clone git@github.com:funchal23/worse-movies-range.git
+cd worse-movie
 ./gradlew bootRun
 ```
 
