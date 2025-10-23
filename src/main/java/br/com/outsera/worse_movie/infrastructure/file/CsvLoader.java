@@ -55,18 +55,18 @@ public class CsvLoader {
             String studios = columns[2].trim();
             String producers = columns[3].trim();
             boolean winner = columns.length > 4 && columns[4].trim().equalsIgnoreCase("yes");
-            MovieDto movie = new MovieDto(year, title, getListFromListString(studios), getListFromListString(producers), winner, line);
+            MovieDto movie = new MovieDto(year, title, toList(studios), toList(producers), winner, line);
             movies.add(movie);
         }
         return movies;
     }
 
-    private static List<String> getListFromListString(String list) {
-        if (list == null || list.isBlank()) {
+    private static List<String> toList(String value) {
+        if (value == null || value.isBlank()) {
             return List.of();
         }
 
-        String normalized = list.replace(" and ", ",");
+        String normalized = value.replace(" and ", ",");
         String[] parts = normalized.split(",");
         List<String> producerList = new ArrayList<>();
         for (String part : parts) {

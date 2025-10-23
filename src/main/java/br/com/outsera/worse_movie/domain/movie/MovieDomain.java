@@ -58,7 +58,7 @@ public class MovieDomain extends Domain {
         return moviesValid;
     }
 
-    public static List<MovieDomain> filterMoreThanOneWinnerPerYear(List<MovieDomain> all) {
+    public static List<MovieDomain> filterRemoveMoreThanOneWinnerPerYear(List<MovieDomain> all) {
         Map<Integer, Long> winnersPerYear = all.stream()
                 .filter(MovieDomain::isWinner)
                 .collect(Collectors.groupingBy(MovieDomain::getYear, Collectors.counting()));

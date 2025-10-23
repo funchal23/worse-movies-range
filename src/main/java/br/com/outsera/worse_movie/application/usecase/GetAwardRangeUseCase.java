@@ -29,7 +29,7 @@ public class GetAwardRangeUseCase implements UseCase<AwardRangeResponse, AwardRa
             throw new MoviesNotFoundException();
         }
         if (request.isDisregardMoreThanOneWinnerPerYear()){
-            all = MovieDomain.filterMoreThanOneWinnerPerYear(all);
+            all = MovieDomain.filterRemoveMoreThanOneWinnerPerYear(all);
         }
         Map<String, List<MovieDomain>> moviesWinner = MovieDomain.getMoviesWinner(all);
         return AwardRangeResponse.builder()
