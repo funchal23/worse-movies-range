@@ -10,8 +10,8 @@ import java.util.List;
 public class MovieDto {
     private Integer year;
     private String title;
-    private List<String> studios;
-    private List<String> producer;
+    private String studios;
+    private List<ProducerDto> producers;
     private boolean winner;
     private int line;
 }
