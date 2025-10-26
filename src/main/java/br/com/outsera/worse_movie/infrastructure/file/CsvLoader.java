@@ -1,11 +1,9 @@
 package br.com.outsera.worse_movie.infrastructure.file;
 
 import br.com.outsera.worse_movie.application.UseCaseIn;
+import br.com.outsera.worse_movie.domain.producer.ProducerGateway;
 import br.com.outsera.worse_movie.infrastructure.file.dtos.MovieDto;
 import br.com.outsera.worse_movie.infrastructure.file.dtos.ProducerDto;
-import br.com.outsera.worse_movie.infrastructure.persistence.entities.ProducerEntity;
-import br.com.outsera.worse_movie.infrastructure.persistence.repository.ProducerRepository;
-import br.com.outsera.worse_movie.utils.mappers.ProducerMapper;
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
 import com.opencsv.CSVReader;
@@ -27,13 +25,11 @@ import java.util.stream.IntStream;
 public class CsvLoader {
 
     private final UseCaseIn<List<MovieDto>> useCaseIn;
-    private final ProducerRepository producerRepository;
-    private final ProducerMapper producerMapper;
+    private final ProducerGateway producerGateway;
 
-    public CsvLoader(UseCaseIn<List<MovieDto>> useCaseIn, ProducerRepository producerRepository, ProducerMapper producerMapper) {
+    public CsvLoader(UseCaseIn<List<MovieDto>> useCaseIn, ProducerGateway producerGateway) {
         this.useCaseIn = useCaseIn;
-        this.producerRepository = producerRepository;
-        this.producerMapper = producerMapper;
+        this.producerGateway = producerGateway;
     }
 
     @EventListener(ApplicationReadyEvent.class)
@@ -78,9 +74,8 @@ public class CsvLoader {
         for (String part : parts) {
             String producer = part.trim();
             if (!producer.isEmpty()) {
-                Optional<ProducerEntity> repositoryByName = producerRepository.findByName(producer);
-                ProducerEntity producerEntity = repositoryByName.orElseGet(() -> producerRepository.save(ProducerEntity.builder().name(producer).build()));
-                producerList.add(producerMapper.toDto(producerEntity));
+                Optional<ProducerDto> producerDto = producerGateway.findByName(producer);
+                producerList.add(producerDto.orElseGet(() -> producerGateway.save(producer)));
             }
         }
         return producerList;
