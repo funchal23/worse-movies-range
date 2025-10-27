@@ -1,4 +1,4 @@
-package br.com.outsera.worse_movie.configuration;
+package br.com.outsera.worse_movie.infrastructure.config;
 
 import br.com.outsera.worse_movie.infrastructure.rest.interceptor.RangeInterceptor;
 import org.springframework.context.annotation.Configuration;

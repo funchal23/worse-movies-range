@@ -1,10 +1,10 @@
 package br.com.outsera.worse_movie.infrastructure.persistence.dao;
 
-import br.com.outsera.worse_movie.domain.movie.MovieDomain;
+import br.com.outsera.worse_movie.domain.movie.Movie;
 import br.com.outsera.worse_movie.domain.movie.MovieGateway;
 import br.com.outsera.worse_movie.infrastructure.persistence.entities.MovieEntity;
 import br.com.outsera.worse_movie.infrastructure.persistence.repository.MovieRepository;
-import br.com.outsera.worse_movie.utils.mappers.MovieMapper;
+import br.com.outsera.worse_movie.infrastructure.mappers.MovieMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -22,14 +22,14 @@ public class MovieDao implements MovieGateway {
     }
 
     @Override
-    public void save(List<MovieDomain> movies) {
+    public void save(List<Movie> movies) {
         List<MovieEntity> entityList = mapper.toEntityList(movies);
         repository.saveAll(entityList);
     }
 
     @Override
-    public List<MovieDomain> findByWinners() {
+    public List<Movie> findByWinners() {
         List<MovieEntity> all = repository.findWinningMoviesWithRepeatedProducers();
-        return mapper.toDomainListByEntity(all);
+        return mapper.toDomainList(all);
     }
 }

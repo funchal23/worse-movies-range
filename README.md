@@ -88,7 +88,6 @@ O projeto segue uma arquitetura limpa com as seguintes camadas:
 - H2 Database
 - Lombok
 - OpenCSV 5.9
-- Map Struct
 
 ## Testes
 A aplicação inclui testes de integração com base no csv original. 

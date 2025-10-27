@@ -1,8 +1,6 @@
 package br.com.outsera.worse_movie.infrastructure.persistence.entities;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -18,7 +16,10 @@ import lombok.NoArgsConstructor;
 @Builder
 public class ProducerEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
     private String name;
+
+    public static ProducerEntity create(String id, String name){
+        return new ProducerEntity(id, name);
+    }
 }

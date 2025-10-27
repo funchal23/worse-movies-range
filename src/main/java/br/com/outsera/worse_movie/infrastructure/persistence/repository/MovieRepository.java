@@ -6,9 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface MovieRepository extends JpaRepository<MovieEntity, Long> {
-    List<MovieEntity> findByWinnerTrue();
-
+public interface MovieRepository extends JpaRepository<MovieEntity, String> {
     @Query("""
                 SELECT DISTINCT m
                 FROM MovieEntity m

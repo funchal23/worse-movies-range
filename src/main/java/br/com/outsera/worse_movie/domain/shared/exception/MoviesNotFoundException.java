@@ -1,4 +1,4 @@
-package br.com.outsera.worse_movie.exception;
+package br.com.outsera.worse_movie.domain.shared.exception;
 
 public class MoviesNotFoundException extends RuntimeException {
     public MoviesNotFoundException() {

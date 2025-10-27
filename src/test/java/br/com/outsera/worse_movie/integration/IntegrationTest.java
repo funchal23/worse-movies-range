@@ -1,6 +1,6 @@
 package br.com.outsera.worse_movie.integration;
 
-import br.com.outsera.worse_movie.infrastructure.rest.response.AwardRangeResponse;
+import br.com.outsera.worse_movie.infrastructure.rest.response.RangeResponse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,17 +16,17 @@ class IntegrationTest {
 
     @Test
     void shouldSuccessGetRangeAward() {
-        ResponseEntity<AwardRangeResponse> response =
-                restTemplate.getForEntity("/ranges", AwardRangeResponse.class);
+        ResponseEntity<RangeResponse> response =
+                restTemplate.getForEntity("/ranges", RangeResponse.class);
         Assertions.assertEquals(200, response.getStatusCode().value());
         Assertions.assertNotNull(response.getBody());
-        Assertions.assertNotNull(response.getBody().getMax());
-        Assertions.assertNotNull(response.getBody().getMin());
-        Assertions.assertEquals(2, response.getBody().getMax().size());
-        Assertions.assertEquals(2, response.getBody().getMin().size());
+        Assertions.assertNotNull(response.getBody().max());
+        Assertions.assertNotNull(response.getBody().min());
+        Assertions.assertEquals(2, response.getBody().max().size());
+        Assertions.assertEquals(2, response.getBody().min().size());
 
-        var minList = response.getBody().getMin();
-        var maxList = response.getBody().getMax();
+        var minList = response.getBody().min();
+        var maxList = response.getBody().max();
 
         String producerA = "Matthew Vaughn";
         String producerB = "Joel Silver";
