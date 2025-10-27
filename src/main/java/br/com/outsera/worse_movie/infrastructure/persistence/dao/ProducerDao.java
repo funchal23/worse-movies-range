@@ -4,7 +4,7 @@ import br.com.outsera.worse_movie.domain.producer.Producer;
 import br.com.outsera.worse_movie.domain.producer.ProducerGateway;
 import br.com.outsera.worse_movie.infrastructure.persistence.entities.ProducerEntity;
 import br.com.outsera.worse_movie.infrastructure.persistence.repository.ProducerRepository;
-import br.com.outsera.worse_movie.infrastructure.mappers.ProducerMapper;
+import br.com.outsera.worse_movie.infrastructure.persistence.mappers.ProducerMapper;
 import org.springframework.stereotype.Component;
 
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package br.com.outsera.worse_movie.infrastructure.mappers;
+package br.com.outsera.worse_movie.infrastructure.persistence.mappers;
 
 import br.com.outsera.worse_movie.domain.movie.Movie;
 import br.com.outsera.worse_movie.domain.movie.MovieId;
